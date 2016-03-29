@@ -4,44 +4,49 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package _s
+ * @package hstl
  */
 
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<?php
-			if ( is_single() ) {
-				the_title( '<h1 class="entry-title">', '</h1>' );
-			} else {
-				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-			}
+		<?php the_title( sprintf( '<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
 
+		<?php
 		if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php _s_posted_on(); ?>
-		</div><!-- .entry-meta -->
+
+		<div class="post-details">
+			<i class="fa fa-user"></i> <?php the_author(); ?>
+			<i class="fa fa-clock-o"></i> <time><?php the_date(); ?></time>
+			<i class="fa fa-folder"></i> <?php the_category(', '); ?>
+			<i class="fa fa-tags"></i> <?php the_tags('', ', ', ''); ?>
+
+			<div class="post-comments-badge">
+				<a href="<?php comments_link(); ?>"><i class="fa fa-comments"></i><?php comments_number( 0, 1, '%'); ?></a>
+			</div><!--post-comments-badge-->
+
+			<div><?php edit_post_link( 'Edit', '<div i class="fa fa-pencil">', '</div>'); ?></div>
+		</div><!--post-details-->
+
 		<?php
 		endif; ?>
 	</header><!-- .entry-header -->
 
-	<div class="entry-content">
-		<?php
-			the_content( sprintf(
-				/* translators: %s: Name of current post. */
-				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', '_s' ), array( 'span' => array( 'class' => array() ) ) ),
-				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-			) );
+	<?php
+		if ( has_post_thumbnail() ) { // check for feature image
+			the_post_thumbnail(array(640, 480));
+		}
+		else {
+			echo '<img src="' .  get_bloginfo('stylesheet_directory') . '/assets/images/DefaultRecentStories.png" height="480px" width="640px" />';
+        }
+	?>
 
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', '_s' ),
-				'after'  => '</div>',
-			) );
-		?>
-	</div><!-- .entry-content -->
+	<div class="post-excerpt">
+		<?php the_excerpt(); ?>
+	</div><!--post-excerpt-->
 
-	<footer class="entry-footer">
-		<?php _s_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+    <!-- XXX - worried, the_content() is not called anywhere here.
+         Is this template being used for its intended purpose? -->
+
 </article><!-- #post-## -->

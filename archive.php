@@ -4,23 +4,28 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package _s
+ * @package hstl
  */
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
 
 		<?php
 		if ( have_posts() ) : ?>
 
-			<header class="page-header">
+		<section class="feature-image feature-image-default-alt" data-type="background" data-speed="2">
+			<h1>
 				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-					the_archive_description( '<div class="taxonomy-description">', '</div>' );
+					the_archive_title();
+					the_archive_description( '<small class="taxonomy-description">', '</small>' );
 				?>
-			</header><!-- .page-header -->
+			</h1><!-- .page-header -->
+
+		</section>
+
+		<div class="container">
+		<div id="primary" class="row">
+		<main id="content" class="col-sm-8">
 
 			<?php
 			/* Start the Loop */
@@ -43,9 +48,17 @@ get_header(); ?>
 
 		endif; ?>
 
-		</main><!-- #main -->
+		</main><!-- #content -->
+
+		<!-- SIDEBAR
+		================================== -->
+			<aside class="col-sm-4">
+			<?php dynamic_sidebar( 'sidebar-spare' ); ?>
+			</aside>
+
 	</div><!-- #primary -->
+	</div><!-- .container -->
 
 <?php
-get_sidebar();
+// get_sidebar();
 get_footer();

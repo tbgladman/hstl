@@ -6,23 +6,56 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package _s
+ * @package hstl
  */
 
 ?>
 
-	</div><!-- #content -->
-
-	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', '_s' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', '_s' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', '_s' ), '_s', '<a href="http://automattic.com/" rel="designer">Automattic</a>' ); ?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
-
 <?php wp_footer(); ?>
+
+<!-- FOOTER
+===================================== -->
+<footer>
+
+	<div class="container">
+
+		<div class="col-sm-2">
+			<p><a href="/"><img src="http://www.otago.ac.nz/ou-logo.png" alt="University of Otago logo. " /></p>
+
+		</div><!--col-->
+
+		<div class="col-sm-7">
+			<nav>
+				<ul class="list-unstyled list-inline">
+					<li><a href="http://www.otago.ac.nz" target="_blank">Otago Home</a></li>
+					<li><a href="http://www.otago.ac.nz/its/services/teaching/otago068451.html" target="_blank">eLearning Toolbox</a></li>
+					<li><a href="http://hedc.otago.ac.nz/magnolia/meg/Home.html" target="_blank">Medical Education Unit</a></li>
+					<li><a href="https://medschool.otago.ac.nz/" target="_blank">MedMoodle</a></li>
+					<li><a href="https://hsmoodle.otago.ac.nz/" target="_blank">HSMoodle</a></li>
+
+				</ul>
+			</nav>
+		</div><!--col-->
+
+		<div class="col-sm-3">
+			<p class="pull-right">&copy; 2016 University of Otago</p>
+		</div><!--col-->
+
+	</div><!--container-->
+
+</footer>
+
+
+<!-- BOOTSTRAP CORE JAVASCRIPT
+		Placed at the end of the document so the pages load faster
+================================================================== -->
+<script src="<?php bloginfo('template_directory'); ?>/assets/js/jquery-2.1.3.min.js" type="text/javascript"></script>
+<script src="<?php bloginfo('template_directory'); ?>/assets/js/main.js" type="text/javascript"></script>
+<script src="<?php bloginfo('template_directory'); ?>/assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!-- Typekit Fonts -->
+<script src="//use.typekit.net/fwc0xbd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
 
 </body>
 </html>

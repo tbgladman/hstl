@@ -4,20 +4,22 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
- * @package _s
+ * @package hstl
  */
 
 get_header(); ?>
 
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+	<section class="feature-image feature-image-default-alt" data-type="background" data-speed="2">
+		<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'hstl' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+	</section>
+
+	<div class="container">
+		<div id="primary" class="row">
+
+			<main id="content" class="col-sm-8">
 
 		<?php
 		if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', '_s' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-			</header><!-- .page-header -->
 
 			<?php
 			/* Start the Loop */
@@ -40,9 +42,21 @@ get_header(); ?>
 
 		endif; ?>
 
-		</main><!-- #main -->
-	</section><!-- #primary -->
+			</main><!--content-->
+
+	<!-- SIDEBAR
+			================================== -->
+			<aside class="col-sm-4">
+				<?php dynamic_sidebar( 'sidebar-spare' ); ?>
+			</aside>
+
+
+
+		</div><!--primary-->
+
+	</div><!--container-->
+
 
 <?php
-get_sidebar();
+//get_sidebar();
 get_footer();

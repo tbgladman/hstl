@@ -9,13 +9,21 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package _s
+ * @package hstl
  */
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+<section class="feature-image feature-image-default-alt" data-type="background" data-speed="2">
+	<h1 class="page-title">What's New</h1>
+</section>
+
+		<!-- BLOG CONTENT
+		===================================== -->
+		<div class="container">
+			<div class="row" id="primary">
+
+				<main id="content" class="col-sm-8" role="main">
 
 		<?php
 		if ( have_posts() ) :
@@ -24,7 +32,6 @@ get_header(); ?>
 				<header>
 					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
 				</header>
-
 			<?php
 			endif;
 
@@ -48,9 +55,19 @@ get_header(); ?>
 
 		endif; ?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+		</main><!--content-->
+
+				<!-- SIDEBAR
+				================================== -->
+				<aside class="col-sm-4">
+
+					<?php get_sidebar(); ?>
+
+				</aside>
+
+			</div><!--row primary-->
+		</div><!--container-->
 
 <?php
-get_sidebar();
+//get_sidebar();
 get_footer();
