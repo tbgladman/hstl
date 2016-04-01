@@ -82,22 +82,18 @@ $innovate_website			= get_field('innovate_website');
  	
  </div><!--container-->
  			
-	
- 
-  			
- 
- <!-- SUBMISSION FORM 
+ <!-- ACTUAL PAGE CONTENT
  ================================== -->
  <section class="main-content" id="submission-form">
  	<div class="container">
  	
- 	<div class="row" id="primary">
+ 	  <div class="row" id="primary">
  		<div id="content" class="col-sm-12">
   			
- 			<p>Do you have an innovation in teaching and learning you would like to share with your colleagues? Please complete the form below with details about your innovation and how it has enhanced your students' learning, and we will post it for other staff to learn from. Thanks!</p>
- 									
- 					<?php echo FrmFormsController::get_form_shortcode( array( 'id' => 4, 'title' => false, 'description' => false ) ); ?>
- 			
+        <?php the_content(); ?>	
+
+ 		</div>
+      </div>
  	</div><!-- /.container -->
  </section><!-- /.main-content -->
  
